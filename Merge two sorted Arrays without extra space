@@ -1,0 +1,19 @@
+        void merge(long long arr1[], long long arr2[], int n, int m) {
+          int i=0,j=0,k=n-1;
+            while(i<=k&&j<m)
+            {
+                if(arr1[i]<arr2[j])
+                {
+                    i++;
+                }
+                else
+                {
+                    //i++;    there might be the case that elements would be smaller than this element (i.e. arr1[i]) 
+                    //        this element might go in the next array or some other case so you dont have to jump 
+                    //        over to the next element
+                    swap(arr2[j++],arr1[k--]);
+                }
+            }
+            sort(arr1,arr1+n);
+            sort(arr2,arr2+m);//o(n+m(log(n+m)))
+            }
