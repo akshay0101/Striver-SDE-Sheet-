@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int n=nums.size();
+        if(n==1)return;
+        int x,y;
+        int flag=0;
+        for(int i=n-1;i>0;i--){                              //  T-O(N)  S-O(1)
+            if(nums[i]>nums[i-1]){
+                x=i-1;
+                flag=1;
+                break;
+            }
+        }
+        for(int i=n-1;i>x;i--){
+            if(nums[i]>nums[x]){
+                y=i;
+                break;
+            }
+        }
+        if(flag==1){
+        swap(nums[x],nums[y]);
+        reverse(nums.begin()+x+1,nums.end());
+        }
+        else{
+            sort(nums.begin(),nums.end());
+        }
+    }     
+};
+
+// C++ Stl easy way is to use next_permutation(nums.begin(),nums.end())
