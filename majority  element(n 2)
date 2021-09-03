@@ -1,0 +1,43 @@
+// most voting algorithm
+class Solution
+{
+public:
+    int majorityElement(vector<int>& nums)
+    {
+        int c(-1), cnt(0);               // c = candidate, cnt = counter
+        
+        for(auto n: nums)
+        {
+            if (cnt == 0)
+                c = n;
+            cnt += (n == c) ? 1 : -1;
+        }
+        
+        return c;
+    }
+};
+
+
+
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int,int>m;
+        int n=nums.size();                                   // most basic map solution
+        for(int i=0;i<n;i++){
+           m[nums[i]]++;
+        }
+        int maxi=INT_MIN;
+        for(auto it:m){
+            maxi=max(maxi,it.second);
+        }
+        int ans;
+        for(auto pr:m){
+            if(pr.second==maxi){
+                ans=pr.first;
+            }
+        }
+        return ans;
+    }
+};
